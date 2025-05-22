@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 # coding: utf-8
 
 # In[1]:
@@ -111,7 +111,7 @@ def bezier_curve_with_extrema(control_points, weights, segment_length=30):
     return bezier_values
 
 # In[2]:
-file_name = "C:/Users/grens/Spaces/Heart Rate Simulation Project/python scripts/result.txt"
+file_name = "/result.txt"
 gapTime = 1500
 MaxGapTime = 3600
 
@@ -147,16 +147,15 @@ resultBSpline = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 resultBasicCHIP = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 resultWords = ["RMSE: ", "EDM: ", "Peak: ", "Metric: ", "Clark15: ", "Clark30: ", "Clark50: ", "Clark Over 50: "]
 
-#data_path_1 = '/Users/vaibhavgupta/Downloads/D1NAMO Preprocessed data/AllDataCombined/7TempPart.csv'
-data_path_1 = 'C:/Users/grens/Spaces/Wissenschaftliche Mitarbeiter/Diabetes/AllDataCombined/7TempPart.csv'
-data_path_2 = 'C:/Users/grens/Spaces/Wissenschaftliche Mitarbeiter/Diabetes/AllDataCombinedNo3/'
+data_path_1 = 'path to the data'
+data_path_2 = 'path to the data'
 
 fileList = glob.glob(data_path_2 + "/*.csv")
 
 print(fileList)
 
 for i in range(0, len(fileList)):
-#for i in range(0, 1):
+
     data = pd.read_csv(fileList[i], sep=",")
     data = data.drop(data[data['HR'] == 0].index)
     data = data.drop(data[data['HR'] == 0.0].index)
@@ -192,7 +191,7 @@ for i in range(0, len(fileList)):
 
             for j in range(0, len(numbers)):
                 print(numbers[j])
-                #Do all the Vaibhav things
+             
 
                 #number[1] is the starting point of the artificial gap
                 #
@@ -485,16 +484,7 @@ for i in range(0, len(fileList)):
                 
                 # Mark the mapped peaks and valleys from PCHIP (using flipped-mapping extrema)
                 plt.scatter(extrema_indices_in_impute, extrema_points_combined, color='purple', label="Mapped Peaks/Valleys", zorder=5)
-                
-
-
-                
-                # Mark the mapped peaks and valleys from PCHIP (using flipped-mapping extrema)
-                #plt.scatter(extrema_indices_before, extrema_points_before, color='purple', label="Mapped Peaks/Valleys", zorder=5)
-                # Mark the mapped peaks and valleys from PCHIP (using flipped-mapping extrema)
-                #plt.scatter(extrema_indices_after, extrema_points_after, color='purple', label="Mapped Peaks/Valleys", zorder=5)
-
-
+              
                 # Titles and labels
                 plt.title("Comparison of Original and Imputed Values")
                 plt.xlabel("Index")
@@ -503,7 +493,7 @@ for i in range(0, len(fileList)):
 
                 figureName = "fig" + str(i) + "at" + str(numbers[j]) + ".png"
                 plt.savefig("C:/Users/grens/Spaces/Heart Rate Simulation Project/python scripts/Graphs/"+figureName)  # Save as a PNG file
-                #plt.show()
+              
                 plt.close()
                 
 
